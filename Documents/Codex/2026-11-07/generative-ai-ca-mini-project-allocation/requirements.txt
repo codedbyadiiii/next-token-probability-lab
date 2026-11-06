@@ -1,0 +1,7 @@
+streamlit>=1.36,<2
+torch>=2.2,<3
+transformers>=4.44,<5
+plotly>=5.22,<6
+matplotlib>=3.8,<4
+seaborn>=0.13,<1
+Pillow>=10,<12
