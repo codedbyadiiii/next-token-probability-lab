@@ -14,11 +14,17 @@ st.set_page_config(page_title="Next-Token Probability Lab", page_icon="🧪", la
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 html, body, [class*="css"] { font-family: Inter, sans-serif; }
-.stApp { background: linear-gradient(135deg,#f8fbff 0%,#eef4fb 100%); }
+.stApp { background: linear-gradient(135deg,#f8fbff 0%,#eef4fb 100%); color: #14213d; }
 .block-container { max-width: 1400px; padding-top: 2rem; }
 .glass { background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.9); border-radius: 22px;
          padding: 1.2rem 1.4rem; box-shadow: 0 12px 36px rgba(31,55,85,.10); margin-bottom: 1rem; }
-h1 { letter-spacing: -0.05em; } h2, h3 { letter-spacing: -0.03em; }
+.glass h2, .glass h3, .glass p, .glass li, .glass label,
+.stMarkdown, .stMarkdown p, .stMarkdown h1, .stMarkdown h2,
+.stMarkdown h3, .stMarkdown li, .stCaption { color: #14213d !important; }
+h1 { color: #14213d !important; letter-spacing: -0.05em; }
+h2, h3 { color: #14213d !important; letter-spacing: -0.03em; }
+div[data-baseweb="textarea"] textarea { background: #ffffff !important; color: #14213d !important; caret-color: #14213d !important; }
+div[data-baseweb="textarea"] textarea::placeholder { color: #6b7890 !important; }
 </style>""", unsafe_allow_html=True)
 
 
@@ -56,7 +62,10 @@ if prompt.strip():
                                  textposition="auto"))
         chart.update_layout(height=440, margin=dict(l=10, r=20, t=10, b=20),
                             xaxis_title="Probability", yaxis_title="Candidate token",
-                            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+                            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                            font=dict(color="#14213d"),
+                            xaxis=dict(title_font=dict(color="#14213d"), tickfont=dict(color="#14213d")),
+                            yaxis=dict(title_font=dict(color="#14213d"), tickfont=dict(color="#14213d")))
         st.plotly_chart(chart, use_container_width=True)
     except Exception as exc: st.warning(str(exc))
 else: st.info("Enter a prompt to inspect next-token probabilities.")
